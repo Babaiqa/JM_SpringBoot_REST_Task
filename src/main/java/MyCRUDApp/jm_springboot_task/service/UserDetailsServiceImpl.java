@@ -1,29 +1,28 @@
 package MyCRUDApp.jm_springboot_task.service;
 
-import MyCRUDApp.jm_springboot_task.dao.UserDAO;
+import MyCRUDApp.jm_springboot_task.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserDAO userDAO;
+    private final UserRepository userRepository;
 
 
     @Autowired
-    public UserDetailsServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        UserDetails user = userDAO.getUserByUsername(s);
+        UserDetails user = userRepository.findByEmail(s);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("Сорян, юзера %s не существует", s));
         }
