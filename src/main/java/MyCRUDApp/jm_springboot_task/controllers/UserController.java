@@ -2,6 +2,7 @@ package MyCRUDApp.jm_springboot_task.controllers;
 
 
 import MyCRUDApp.jm_springboot_task.model.User;
+import MyCRUDApp.jm_springboot_task.repository.UserRepository;
 import MyCRUDApp.jm_springboot_task.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,8 @@ public class UserController {
     @GetMapping("/user")
     public String showUserData(Principal principal, Model model) {
         model.addAttribute("user",
-                userService.getUserByUsername(principal.getName()));
+
+                userService.findByEmail(principal.getName()));
         return "showUser";
     }
 
@@ -40,11 +42,4 @@ public class UserController {
     }
 
 
-
-
-    @PostMapping("/add")
-    public String addUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/login";
-    }
 }

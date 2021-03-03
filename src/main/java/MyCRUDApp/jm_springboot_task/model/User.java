@@ -16,7 +16,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long id;
+    private long id;
 
     @Column(name = "Name", nullable = false)
     private String name;
@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     }
 
-    public User(Long id, String name, String surname, String profession, String email, String password) {
+    public User(long id, String name, String surname, String profession, String email, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;

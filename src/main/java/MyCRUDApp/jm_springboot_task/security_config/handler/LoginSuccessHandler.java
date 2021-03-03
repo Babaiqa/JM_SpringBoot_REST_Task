@@ -1,4 +1,4 @@
-package MyCRUDApp.jm_springboot_task.config.security.handler;
+package MyCRUDApp.jm_springboot_task.security_config.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
