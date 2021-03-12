@@ -22,7 +22,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         boolean admin = false;
 
         for (GrantedAuthority auth : authentication.getAuthorities()) {
-            if ("ROLE_ADMIN".equals(auth.getAuthority())) {
+            if ("ADMIN".equals(auth.getAuthority())) {
                 admin = true;
             }
         }
