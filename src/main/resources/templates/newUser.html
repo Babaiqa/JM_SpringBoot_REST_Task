@@ -60,7 +60,21 @@
                         <div class="row">
                             <div class="col-md-4"></div>
 <!-- ...Вернее вот она-->
-                            <form class="col-md-4 text-center font-weight-bold" th:method="POST" th:action="@{/admin/add}" th:object="${user}">
+                            <form class="col-md-4 text-center font-weight-bold"
+                                  th:method="POST" th:action="@{/admin/add}" th:object="${user}">
+
+                                <label>Name</label>
+                                <input type="text" th:field="*{name}" id="name" class="form-control"
+                                placeholder="Input name"/>
+
+                                <label>Surname</label>
+                                <input type="text" th:field="*{surname}" id="surname" class="form-control"
+                                placeholder="Input surname"/>
+
+                                <label>Profession</label>
+                                <input type="text" th:field="*{profession}" id="profession" class="form-control"
+                                placeholder="Input profession"/>
+
                                 <label>Email</label>
                                 <input type="email" th:field="*{email}" id="email" class="form-control "
                                        placeholder="Input email"/>
@@ -68,18 +82,6 @@
                                 <label>Password</label>
                                 <input type="password" th:field="*{password}" id="password" class="form-control"
                                        placeholder="Input password"/>
-
-                                <label>Name</label>
-                                <input type="text" th:field="*{name}" id="name" class="form-control"
-                                       placeholder="Input name"/>
-
-                                <label>Surname</label>
-                                <input type="text" th:field="*{surname}" id="surname" class="form-control"
-                                       placeholder="Input surname"/>
-
-                                <label>Profession</label>
-                                <input type="text" th:field="*{profession}" id="profession" class="form-control"
-                                       placeholder="Input profession"/>
 
                                 <hr>
                                 <label for="selectRoles">Select roles</label>

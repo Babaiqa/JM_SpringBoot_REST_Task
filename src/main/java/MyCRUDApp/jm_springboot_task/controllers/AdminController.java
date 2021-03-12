@@ -73,7 +73,7 @@ public class AdminController {
     }
 
     @PostMapping("/{id}/update")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id,
+    public String updateUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "selectRoles[]") String[] arr, @RequestParam(value = "password") String password) {
 
         Set<Role> setOfRoles = new HashSet<>();
