@@ -1,22 +1,15 @@
 package MyCRUDApp.jm_springboot_task.controllers;
 
-import MyCRUDApp.jm_springboot_task.model.Role;
 import MyCRUDApp.jm_springboot_task.model.User;
 import MyCRUDApp.jm_springboot_task.service.RoleService;
 import MyCRUDApp.jm_springboot_task.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.String;
-import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 
 @RestController
 @RequestMapping()
@@ -46,8 +39,10 @@ public class AdminRestController {
     }
 
     @PostMapping("/save")
-    public User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+
 
     }
 

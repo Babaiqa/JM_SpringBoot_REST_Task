@@ -16,19 +16,17 @@ function saveUser() {
         email: window.newUserForm.email.value,
         roles: Array.from(roleSet)
     };
-
-    $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: 'http://localhost:8080/save',
-        data: JSON.stringify(user),
-        dataType: 'json',
-        cache: false,
-        success: function (response) {
-            let responseRoles = response.roles.map(role => role.roleName).sort((a, b) => a.localeCompare(b));
-
-            $('table')
-                .append(
+    if (!(Object.values(user)).includes(null)) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: 'http://localhost:8080/save',
+            data: JSON.stringify(user),
+            dataType: 'json',
+            cache: false,
+            success: function (response) {
+                let responseRoles = response.roles.map(role => role.roleName).sort((a, b) => a.localeCompare(b));
+                $('#tbody').append(
                     '<tr id="' + response.id + '">\n' +
                     '<td>' + response.id + '</td>\n' +
                     '<td>' + response.name + '</td>\n' +
@@ -40,7 +38,10 @@ function saveUser() {
                     '<td><button class="btn btn-primary editButton" onclick="modalEditFunc(' + response.id + ')">Edit</button></td>\n' +
                     '<td><button class="btn btn-danger deleteButton" onclick="modalDeleteFunc(' + response.id + ')">Delete</button></td>\n' +
                     '</tr>'
-                )
-        }
-    })
+                );
+                showAll();
+            }
+
+        })
+    }
 }

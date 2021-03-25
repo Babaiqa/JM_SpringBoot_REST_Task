@@ -33,13 +33,13 @@ function newUser() {
         '                                \n' +
         '                                <hr>\n' +
         '                                <label for="selectRoles">Select roles</label>\n' +
-        '                                <select class="form-control" name="selectRoles" required multiple id="selectRoles"\n' +
+        '                                <select class="form-control" required multiple id="selectRoles"\n' +
         '                                        size="2">\n' +
         '                                    <option value="1">ADMIN</option>\n' +
         '                                    <option value="2">USER</option>\n' +
         '                                </select>\n' +
         '                                <br>\n' +
-        '                                <a class="btn btn-success" type="submit" href="" onclick="saveUser()">Add new user</a>\n' +
+        '                                <button class="btn btn-success" type="submit" onclick="saveUser();return false">Add new user</button>\n' +
         '                            </form>\n' +
         '                            <div class="col-md-4"></div>\n' +
         '                        </div>\n' +
