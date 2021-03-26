@@ -1,7 +1,6 @@
 package MyCRUDApp.jm_springboot_task.controllers;
 
 import MyCRUDApp.jm_springboot_task.model.User;
-import MyCRUDApp.jm_springboot_task.service.RoleService;
 import MyCRUDApp.jm_springboot_task.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +14,11 @@ import java.util.List;
 @RequestMapping()
 public class AdminRestController {
 
-    private UserService userService;
-    private RoleService roleService;
+    private final UserService userService;
 
     @Autowired
-    public AdminRestController(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService) {
         this.userService = userService;
-        this.roleService = roleService;
     }
 
     @GetMapping()
