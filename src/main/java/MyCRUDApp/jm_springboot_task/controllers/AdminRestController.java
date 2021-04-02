@@ -23,16 +23,11 @@ public class AdminRestController {
 
     @GetMapping()
     public ResponseEntity<List<User>> showAllUsers() {
-        try {
-            List<User> userList = userService.getAllUsers();
-            if (userList.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            } else {
-                 return new ResponseEntity<>(userList, HttpStatus.OK);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+
+        List<User> userList = userService.getAllUsers();
+
+        return new ResponseEntity<>(userList, HttpStatus.OK);
+
     }
 
     @PostMapping("/save")

@@ -1,38 +1,18 @@
 package MyCRUDApp.jm_springboot_task.service;
 
 import MyCRUDApp.jm_springboot_task.model.Role;
-import MyCRUDApp.jm_springboot_task.repository.RoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
-@Transactional
-public class RoleService {
+public interface RoleService {
 
-    @Autowired
-    private RoleRepository roleRepository;
+    List<Role> getAllRoles();
 
-    public List<Role> getAllRoles() {
-        return roleRepository.findAll();    }
+    Role getRoleById(int id);
 
-    public Role getRoleById(int id) {
-        return roleRepository.findById(id).get();
-    }
+    void deleteRole(int id);
 
-    public void deleteRole(int id) {
-        roleRepository.deleteById(id);
-    }
+    Role saveRole(Role role);
 
-    public Role saveRole(Role role) {
-        return roleRepository.save(role);
-    }
-
-    public Role updateRole(int id) {
-        return roleRepository.save(roleRepository.getOne(id));
-    }
+    Role updateRole(int id);
 }
-
-

@@ -33,8 +33,7 @@ public class MainController {
 
 
     @GetMapping(value = "/login")
-    public String getLoginPage(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+    public String getLoginPage() {
         return "login";
     }
 }
